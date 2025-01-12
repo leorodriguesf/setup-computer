@@ -1,0 +1,10 @@
+- name: Clone project dotfiles
+  git:
+    repo: git@github.com:leonardorodriguesf/dotfiles.git
+    dest: "~/personal/projects/dotfiles"
+    accept_hostkey: true
+
+- name: Clone project setup-computer
+  git:
+    repo: git@github.com:leonardorodriguesf/setup-computer.git
+    dest: "~/personal/projects/setup-computer"

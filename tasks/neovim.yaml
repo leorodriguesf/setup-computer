@@ -1,0 +1,7 @@
+- name: Install neovim
+  homebrew:
+    name: neovim
+
+- name: Install ripgrep (required for telescope)
+  homebrew:
+    name: ripgrep

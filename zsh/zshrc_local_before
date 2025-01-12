@@ -1,0 +1,15 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+eval "$(starship init zsh)"
+
+# Load git completions. Don't exaclty why (https://stackoverflow.com/questions/73393101/how-to-enable-git-autocomplete-in-macos)
+autoload -Uz compinit && compinit
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
+export PATH="$PATH:/Applications/flameshot.app/Contents/MacOS"

@@ -1,0 +1,16 @@
+- name: Install nvm
+  shell: PROFILE=/dev/null bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash'
+  args:
+    creates: "{{ xdg_config_home }}/nvm/nvm.sh"
+
+- name: Install node
+  shell: |
+    export NVM_DIR="$HOME/.config/nvm"
+    . "$NVM_DIR/nvm.sh"
+    nvm install node
+
+- name: Install pnpm
+  shell: |
+    export NVM_DIR="$HOME/.config/nvm"
+    . "$NVM_DIR/nvm.sh"
+    corepack enable pnpm

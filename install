@@ -13,3 +13,6 @@ git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+
+ansible-playbook install.yaml --tags "dotfiles,1password"
+ansible-playbook install.yaml --skip-tags "dotfiles,1password" --vault-id=./vault/vault-from-op.sh

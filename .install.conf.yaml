@@ -1,0 +1,25 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ["~", "~/.config"]
+
+- link:
+    ~/.local/bin:
+      path: bin
+
+    ~/.zshrc_local_before:
+      path: zsh/zshrc_local_before
+
+    ~/.config/aerospace:
+      path: aerospace
+
+    ~/.config/hammerspoon:
+      path: hammerspoon
+
+    ~/.hammerspoon:
+      path: ~/.config/hammerspoon
+- shell:
+    - git submodule update --init --recursive
+    - ./prerequisites/install-required.sh

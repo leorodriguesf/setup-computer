@@ -1,0 +1,3 @@
+- name: Install LocalSend
+  homebrew_cask:
+    name: localsend

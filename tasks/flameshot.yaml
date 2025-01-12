@@ -1,0 +1,6 @@
+- name: Install Rosetta (allow run Intel based code)
+  shell: softwareupdate --install-rosetta --agree-to-license
+
+- name: Install flameshot
+  homebrew_cask:
+    name: flameshot

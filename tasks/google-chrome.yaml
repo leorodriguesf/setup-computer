@@ -1,0 +1,10 @@
+- name: Install Google Chrome
+  homebrew_cask:
+    name: google-chrome
+
+- name: Install defaultbrowser
+  homebrew:
+    name: defaultbrowser
+
+- name: Setup Google Chrome as default browser
+  shell: defaultbrowser chrome

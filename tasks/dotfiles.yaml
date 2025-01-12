@@ -1,0 +1,11 @@
+- name: Clone dotfiles
+  git:
+    repo: https://github.com/leonardorodriguesf/dotfiles
+    dest: "{{ xdg_data_home }}/dotfiles"
+
+- name: Link dotfiles
+  shell: "{{ xdg_data_home }}/dotfiles/install"
+  register: link_dotfiles
+
+- debug:
+    msg: "{{ link_dotfiles.stdout_lines }}"

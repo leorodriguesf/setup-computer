@@ -1,0 +1,6 @@
+- name: Install Hammerspoon
+  homebrew_cask:
+    name: hammerspoon
+
+- name: Open Hammerspoon
+  shell: open /Applications/Hammerspoon.app

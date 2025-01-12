@@ -1,0 +1,21 @@
+- name: Add zsh-autosuggestions
+  homebrew:
+    name: zsh-autosuggestions
+
+- name: Check if MesloLG (Nerd Font) is installed
+  shell: test -n "$(find ~/Library/Fonts -maxdepth 1 -name 'Meslo*')"
+  register: nerd_font_installed
+  failed_when: false
+
+- name: Install MesloLG (Nerd Font)
+  when: nerd_font_installed.rc != 0
+  shell: |
+    cd /tmp
+    curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Meslo.zip
+    unzip Meslo.zip -d Meslo
+    cp Meslo/*.ttf ~/Library/Fonts
+    rm -rf Meslo.zip Meslo
+
+- name: Install starship (zsh prompt)
+  homebrew:
+    name: starship

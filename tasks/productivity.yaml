@@ -1,0 +1,27 @@
+- name: Install fzf
+  homebrew:
+    name: fzf
+
+- name: Install jq
+  homebrew:
+    name: jq
+
+- name: Install tldr
+  homebrew:
+    name: tlrc
+
+- name: Install shellcheck
+  homebrew:
+    name: shellcheck
+
+- name: Install pup
+  homebrew:
+    name: pup
+
+- name: Install lnav
+  homebrew:
+    name: lnav
+
+- name: Install htop
+  homebrew:
+    name: htop

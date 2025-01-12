@@ -1,0 +1,43 @@
+- hosts: localhost
+  vars:
+    xdg_data_home: "{{ lookup('env', 'XDG_DATA_HOME') }}"
+    xdg_config_home: "{{ lookup('env', 'XDG_CONFIG_HOME') }}"
+    xdg_state_home: "{{ lookup('env', 'XDG_STATE_HOME') }}"
+    setup_home_dir: "{{ lookup('env', 'SETUP_HOME') }}"
+  tasks:
+    - import_tasks: tasks/dotfiles.yaml
+      tags: dotfiles
+    - import_tasks: tasks/1password.yaml
+      tags: 1password
+    - import_tasks: tasks/ssh.yaml
+      tags: ssh
+    - import_tasks: tasks/zsh.yaml
+      tags: zsh
+    - import_tasks: tasks/productivity.yaml
+      tags: productivity
+    - import_tasks: tasks/neovim.yaml
+      tags: neovim
+    - import_tasks: tasks/node.yaml
+      tags: node
+    - import_tasks: tasks/projects.yaml
+      tags: projects
+    - import_tasks: tasks/aerospace.yaml
+      tags: aerospace
+    - import_tasks: tasks/alacritty.yaml
+      tags: alacritty
+    - import_tasks: tasks/docker.yaml
+      tags: docker
+    - import_tasks: tasks/flameshot.yaml
+      tags: flameshot
+    - import_tasks: tasks/google-chrome.yaml
+      tags: google-chrome
+    - import_tasks: tasks/hammerspoon.yaml
+      tags: hammerspoon
+    - import_tasks: tasks/localsend.yaml
+      tags: localsend
+    - import_tasks: tasks/slack.yaml
+      tags: slack
+    - import_tasks: tasks/spotify.yaml
+      tags: spotify
+    - import_tasks: tasks/vscode.yaml
+      tags: vscode
