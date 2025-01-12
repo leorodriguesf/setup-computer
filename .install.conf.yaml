@@ -25,4 +25,3 @@
       path: ~/.config/hammerspoon
 - shell:
     - git submodule update --init --recursive
-    - ./prerequisites/install-required.sh
