@@ -31,7 +31,7 @@ fi
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
-export SETUP_HOME="$XDG_DATA_HOME/setup-computer"
+export SETUP_HOME="$HOME/personal/projects/setup-computer"
 
 cd ~
 rm -rf "$SETUP_HOME"
