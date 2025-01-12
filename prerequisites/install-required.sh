@@ -1,18 +1,29 @@
-# Use sudo to install Homebrew with root privileges to prevent installation failures.
-sudo echo "Installing required packages..."
+#!/usr/bin/env sh
 
-if [ ! -f /opt/homebrew/bin/brew ]; then
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [ "$(id -u)" -eq 0 ]; then
+    SUDO=""
+
+else
+    SUDO="sudo"
 fi
 
-if ! command -v brew >/dev/null; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+# Use sudo to install root privileges to prevent installation failures.
+$SUDO echo "Installing required packages..."
+
+apt-get update
+
+export DEBIAN_FRONTEND=noninteractive
+
+if ! command -v git >/dev/null; then
+    apt-get install git -y
 fi
 
 if ! command -v python3 >/dev/null; then
-    brew install python3
+    apt-get install python3 -y
 fi
 
 if ! command -v ansible >/dev/null; then
-    brew install ansible
+    apt install software-properties-common -y
+    add-apt-repository --yes --update ppa:ansible/ansible
+    apt install ansible -y
 fi
