@@ -16,4 +16,3 @@
       path: zsh/zshrc_local_after
 - shell:
     - git submodule update --init --recursive
-    - ./prerequisites/install-required.sh
