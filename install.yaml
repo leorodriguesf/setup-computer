@@ -5,12 +5,12 @@
     xdg_state_home: "{{ lookup('env', 'XDG_STATE_HOME') }}"
     setup_home_dir: "{{ lookup('env', 'SETUP_HOME') }}"
   tasks:
-    - import_tasks: tasks/dotfiles.yaml
-      tags: dotfiles
     - import_tasks: tasks/1password.yaml
       tags: 1password
     - import_tasks: tasks/ssh.yaml
       tags: ssh
+    - import_tasks: tasks/dotfiles.yaml
+      tags: dotfiles
     - import_tasks: tasks/zsh.yaml
       tags: zsh
     - import_tasks: tasks/productivity.yaml

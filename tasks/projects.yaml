@@ -1,10 +1,4 @@
-- name: Clone project dotfiles
-  git:
-    repo: git@github.com:leonardorodriguesf/dotfiles.git
-    dest: "~/personal/projects/dotfiles"
-    accept_hostkey: true
-
-- name: Clone project setup-computer
-  git:
-    repo: git@github.com:leonardorodriguesf/setup-computer.git
-    dest: "~/personal/projects/setup-computer"
+- name: Change setup-computer remote (becuase it is already cloned)
+  shell: git remote set-url origin git@github.com:leorodriguesf/setup-computer.git
+  args:
+    chdir: ~/personal/projects/setup-computer
