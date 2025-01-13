@@ -1,1 +1,2 @@
-
+require('reload')
+require('shortcut')
