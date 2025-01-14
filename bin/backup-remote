@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export BORG_PASSCOMMAND="op item get borg-backup-mac-remote --fields label=password --reveal"
+
+do-borg-backup $(op item get borg-backup-mac-remote --fields label=URL)

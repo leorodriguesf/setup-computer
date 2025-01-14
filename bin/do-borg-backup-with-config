@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+
+from datetime import datetime
+import argparse
+import json
+import os
+import random
+import re
+import subprocess
+import sys
+
+
+def do_backup(repo, conf, args):
+    env = dict(os.environ)
+
+    env["BORG_REPO"] = os.path.expanduser(repo['repo'])
+
+    if args.interactive:
+        env["BORG_PASSCOMMAND"] = repo['pass_command']
+    else:
+        env["BORG_PASSPHRASE"] = repo['passphrase']
+
+    print(env)
+
+    try:
+        result = subprocess.run('do-borg-backup', check=True, text=True, env=env)
+        print("Backup completed successfully!")
+    except subprocess.CalledProcessError as e:
+        print(e)
+        raise Exception(f"An error occurred while running borg: {e}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Perform Borg backup based on configuration')
+    parser.add_argument('config_file', help='Path to the configuration file')
+    parser.add_argument('--repo', help='Select a specific repo by name')
+    parser.add_argument('--interactive', help='Execute passphrase command', action=argparse.BooleanOptionalAction, default=True)
+    args = parser.parse_args()
+    env = dict(os.environ)
+
+    with open(args.config_file) as f:
+        conf = json.load(f)
+
+    if args.repo:
+        # If repo is specified, find it by name
+        eligible_repos = [r for r in conf['repos'] if r['name'] == args.repo]
+        if not eligible_repos:
+            print(f'No repo found with name "{args.repo}"', file=sys.stderr)
+            exit(1)
+        repos = eligible_repos
+    else:
+        repos = conf["repos"]
+
+    for repo in repos:
+        print(f'Backing up {repo["name"]} ({repo["repo"]})', file=sys.stderr)
+        try:
+            do_backup(repo, conf, args)
+        except Exception as e:
+            print(e)
+
+if __name__ == '__main__':
+    main()

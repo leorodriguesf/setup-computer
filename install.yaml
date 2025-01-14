@@ -41,3 +41,5 @@
       tags: spotify
     - import_tasks: tasks/vscode.yaml
       tags: vscode
+    - import_tasks: tasks/backup.yaml
+      tags: backup
