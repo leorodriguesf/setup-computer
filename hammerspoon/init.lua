@@ -1,2 +1,2 @@
 require('reload')
-require('shortcut')
+require('shortcuts')
