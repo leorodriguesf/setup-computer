@@ -43,3 +43,5 @@
       tags: vscode
     - import_tasks: tasks/backup.yaml
       tags: backup
+    - import_tasks: tasks/sizzy.yaml
+      tags: sizzy
