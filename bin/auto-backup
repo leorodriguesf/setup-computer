@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# some helpers and error handling:
+info() { echo -e "\n$(date) $1\n"; }
+trap 'info $( date ) Backup interrupted >&2; exit 2' INT TERM
+
+create-backup() {
+    echo "Checking date of last backup"
+
+    last_back=$(BORG_REPO=$1 BORG_PASSPHRASE=$2 borg list | awk '{print $3}' | tail -n 1 | xargs date -j -f "%Y-%m-%d" +"%s")
+
+    if [[ -z "$last_back" ]]; then
+        backup
+        exit 0
+    fi
+
+    now=$(date +%s)
+    # 86400 is the total number of seconds in one day
+    diff=$((($now - $last_back) / 86400))
+
+    if [ $diff -ge 1 ]; then
+        backup
+    else
+        echo "Daily backup already done"
+    fi
+}
+
+info "Running borg backup remote..."
+create-backup "$COMPUTER_BACKUP_REMOTE_REPO" "$COMPUTER_BACKUP_REMOTE_PASSPHRASE"
+
+info "Running borg backup local..."
+if [[ -d "$1" ]]; then
+    create-backup "$COMPUTER_BACKUP_LOCAL_REPO" "$COMPUTER_BACKUP_LOCAL_PASSPHRASE"
+else
+    echo "Local device not connected. Skipping..."
+fi
