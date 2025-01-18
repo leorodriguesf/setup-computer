@@ -5,7 +5,8 @@
     create:
       mode: 0755
 
-- clean: ["~", "~/.config"]
+- clean:
+    ["~", "~/.config", "~/.local", "~/.local/share", "~/.local/state", "~/bin"]
 
 - link:
     ~/.local/bin:
