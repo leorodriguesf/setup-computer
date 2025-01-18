@@ -11,11 +11,23 @@
     ~/.local/bin:
       path: bin
 
+    ~/.shell_local_before:
+      path: shell/shell_local_before
+
+    ~/.shell_local_after:
+      path: shell/shell_local_after
+
     ~/.zshrc_local_before:
       path: zsh/zshrc_local_before
 
     ~/.zshrc_local_after:
       path: zsh/zshrc_local_after
+
+    ~/.bashrc_local_before:
+      path: bash/bashrc_local_before
+
+    ~/.bashrc_local_after:
+      path: bash/bashrc_local_after
 
     ~/.config/aerospace:
       path: aerospace

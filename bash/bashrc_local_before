@@ -1,0 +1,6 @@
+[ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash ] &&
+    . /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+
+eval "$(starship init bash)"
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
