@@ -14,7 +14,7 @@ I've decided to split my backups into two different purposes:
 
 ## Computer backup
 
-TODO
+Documents folder: sync between Apple devices (iCloud). If you want to access any file in your iPhone or iPad, you should keep them here
 
 ## Passwords backup
 
@@ -38,13 +38,13 @@ Ensure the following dependencies are installed and configured:
 - **BorgBackup** (`borg`):
   - Required to list and extract password backups.
   - Install it by following the [installation guide](https://borgbackup.readthedocs.io/en/stable/installation.html).
-- **Ansible Vault password**: Ensure you know it.
-- **Borg passphrase**: Ensure you know it.
+- **Ansible Vault password**: Same as master password.
+- **Borg passphrase**: Same as master password.
 
 ### Usage
 
-1. Download the [encrypted file](../secrets/passwords-backup.config) that can be decrypted using your vault password.
-2. Decrypt the file to access metadata about the servers/devices storing your password backups. This file contains only non-sensitive data.
+1. Download the [encrypted files](../emergency-kit)
+2. Decrypt the files to access metadata about the servers/devices storing your password backups. This file contains only non-sensitive data.
 3. List the password backups on the most convenient server/device at the time. This step will prompt you for the repository passphrase:
 
    ```bash
