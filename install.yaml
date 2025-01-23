@@ -45,3 +45,5 @@
       tags: backup
     - import_tasks: tasks/sizzy.yaml
       tags: sizzy
+    - import_tasks: tasks/discord.yaml
+      tags: discord

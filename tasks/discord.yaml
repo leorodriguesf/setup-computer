@@ -1,0 +1,3 @@
+- name: Install Discord
+  homebrew_cask:
+    name: Discord
