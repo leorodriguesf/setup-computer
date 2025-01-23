@@ -1,4 +1,1 @@
-# Load git completions. Don't exaclty why (https://stackoverflow.com/questions/73393101/how-to-enable-git-autocomplete-in-macos)
-autoload -Uz compinit && compinit
-
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
