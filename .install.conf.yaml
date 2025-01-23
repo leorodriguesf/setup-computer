@@ -40,11 +40,8 @@
       path: ~/.config/hammerspoon
 - create:
     - ~/work
-    - ~/study
     - ~/personal
-    - ~/archive
-    - ~/misc
-    - ~/templates
+    - ~/Documents
 
 - shell:
     - git submodule update --init --recursive

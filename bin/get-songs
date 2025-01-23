@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+TMPFILE=$(mktemp)
+
+spotify-backup "$TMPFILE" --dump=liked --format=json
+cat "$TMPFILE" | jq -r '.playlists | .[] | .tracks | .[] | "\(.track.name);\(.track.artists | map(.name) | join(", "))"' >~/personal/music/songs.csv
+
+rm -rf "$TMPFILE"

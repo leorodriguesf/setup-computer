@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+# Prevent the system from sleeping while the script is running
+caffeinate -s -u -w $$ &
+
+BORG_REPO_REMOTE=$(op read "op://Personal/computer-backup-remote/URL")
+BORG_PASSPHRASE_REMOTE=$(op read "op://Personal/computer-backup-remote/passphrase")
+BORG_REPO_LOCAL="/Volumes/$(op read "op://Personal/computer-backup-local/URL")"
+BORG_PASSPHRASE_LOCAL=$(op read "op://Personal/computer-backup-local/passphrase")
+BACKUP_NAME="{hostname}-{now}"
+
+# some helpers and error handling:
+info() { echo -e "\n$(date +%c) $1\n"; }
+trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
+
+create-backup() {
+    echo "Starting backup"
+
+    BORG_REPO=$1 BORG_PASSPHRASE=$2 borg create \
+        --verbose \
+        --filter AME \
+        --list \
+        --stats \
+        --show-rc \
+        --compression lz4 \
+        --exclude-caches \
+        --exclude '**/node_modules' \
+        --exclude '**/dist' \
+        --exclude '**/*cache*' \
+        --exclude '**/.DS_Store' \
+        --exclude '**/dotbot' \
+        \
+        ::"$BACKUP_NAME" \
+        ~/personal \
+        ~/Documents
+}
+
+prune-backup() {
+    echo "Pruning repository"
+
+    BORG_REPO=$1 BORG_PASSPHRASE=$2 borg prune \
+        --list \
+        --glob-archives '{hostname}-*' \
+        --show-rc \
+        --keep-daily 7 \
+        --keep-weekly 4 \
+        --keep-monthly 6
+}
+
+compact-backup() {
+    echo "Compacting repository"
+
+    BORG_REPO=$1 BORG_PASSPHRASE=$2 borg compact --show-rc
+}
+
+info "Getting songs..."
+get-songs
+
+info "Backing up passwords"
+backup-passwords
+
+info "Running borg backup remote..."
+create-backup "$BORG_REPO_REMOTE" "$BORG_PASSPHRASE_REMOTE"
+backup_exit=$?
+
+info "Running borg prune remote..."
+prune-backup "$BORG_REPO_REMOTE" "$BORG_PASSPHRASE_REMOTE"
+prune_exit=$?
+
+info "Running borg compact remote..."
+compact-backup "$BORG_REPO_REMOTE" "$BORG_PASSPHRASE_REMOTE"
+compact_exit=$?
+
+info "Running borg backup local..."
+if [[ -d "$BORG_REPO_LOCAL" ]]; then
+    create-backup "$BORG_REPO_LOCAL" "$BORG_PASSPHRASE_LOCAL"
+    backup_exit=$?
+
+    echo "Running borg prune local..."
+    prune-backup "$BORG_REPO_LOCAL" "$BORG_PASSPHRASE_LOCAL"
+    prune_exit=$?
+
+    echo "Running borg compact local..."
+    compact-backup "$BORG_REPO_LOCAL" "$BORG_PASSPHRASE_LOCAL"
+    compact_exit=$?
+else
+    echo "Local device not connected. Skipping..."
+fi
+
+# use highest exit code as global exit code
+global_exit=$((backup_exit > prune_exit ? backup_exit : prune_exit))
+global_exit=$((compact_exit > global_exit ? compact_exit : global_exit))
+
+if [ ${global_exit} -eq 0 ]; then
+    info "Backup, Prune, and Compact finished successfully"
+elif [ ${global_exit} -eq 1 ]; then
+    info "Backup, Prune, and/or Compact finished with warnings"
+else
+    info "Backup, Prune, and/or Compact finished with errors"
+fi
+
+exit ${global_exit}
