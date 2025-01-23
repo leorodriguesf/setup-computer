@@ -1,7 +1,6 @@
-# Use sudo to install Homebrew with root privileges to prevent installation failures.
-sudo echo "Installing required packages..."
-
 if [ ! -f /opt/homebrew/bin/brew ]; then
+    # Use sudo to install Homebrew with root privileges to prevent installation failures.
+    sudo echo "Installing Homebrew packages..."
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 

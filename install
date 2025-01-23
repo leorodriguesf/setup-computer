@@ -2,6 +2,9 @@
 
 set -e
 
+# Prevent the system from sleeping while the script is running
+caffeinate -s -u -w $$ &
+
 source prerequisites/install-required.sh
 
 CONFIG=".install.conf.yaml"
@@ -18,4 +21,4 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 
 ansible-playbook install.yaml --tags "1password"
 ansible-playbook install.yaml --tags "ssh" --vault-id=./vault/vault-from-op.sh
-ansible-playbook install.yaml --skip-tags "1password,ssh"
+ansible-playbook install.yaml --ask-become-pass --skip-tags "1password,ssh"
