@@ -25,3 +25,8 @@
 - name: Install htop
   homebrew:
     name: htop
+
+- name: Install tgpt
+  shell: curl -sSL https://raw.githubusercontent.com/aandrew-me/tgpt/main/install | bash -s /usr/local/bin
+  args:
+    creates: /usr/local/bin/tgpt
