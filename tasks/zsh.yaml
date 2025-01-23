@@ -19,3 +19,6 @@
 - name: Install starship (zsh prompt)
   homebrew:
     name: starship
+
+- name: Change default shell
+  shell: chsh -s /bin/zsh
