@@ -1,0 +1,4 @@
+alias backup="caffeinate -i backup"
+alias backup-passwords="caffeinate -i backup-passwords"
+alias get-songs="caffeinate -i get-songs"
+alias spotify-backup="caffeinate -i spotify-backup"
