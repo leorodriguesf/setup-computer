@@ -21,4 +21,5 @@
     name: starship
 
 - name: Change default shell
-  shell: sudo chsh -s /bin/zsh $(whoami)
+  become: true
+  shell: chsh -s /bin/zsh $(whoami)
