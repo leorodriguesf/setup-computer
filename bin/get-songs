@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-TMPFILE=$(mktemp)
+cd ~/personal/music
 
-spotify-backup "$TMPFILE" --dump=liked --format=json
-cat "$TMPFILE" | jq -r '.playlists | .[] | .tracks | .[] | "\(.track.name);\(.track.artists | map(.name) | join(", "))"' >~/personal/music/songs.csv
+spotify-backup ./songs.json --dump=liked --format=json
+cat ./songs.json | jq -r '.playlists | .[] | .tracks | .[] | "\(.track.name);\(.track.artists | map(.name) | join(", "));\(.track.external_urls.spotify)"' >./songs.csv
 
-rm -rf "$TMPFILE"
+cd - >/dev/null
