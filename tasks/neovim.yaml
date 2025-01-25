@@ -1,7 +1,17 @@
 - name: Install neovim
-  homebrew:
-    name: neovim
+  become: true
+  snap:
+    name: nvim
+    classic: true
 
 - name: Install ripgrep (required for telescope)
-  homebrew:
-    name: ripgrep
+  become: true
+  shell: |
+    cd /tmp
+    curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
+    sudo dpkg -i ripgrep_14.1.0-1_amd64.deb
+
+- name: Install xclip to allow user + buffer to copy and past
+  become: true
+  apt:
+    name: xclip

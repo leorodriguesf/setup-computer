@@ -2,17 +2,37 @@
     link:
       relink: true
       create: true
+    create:
+      mode: 0755
 
-- clean: ["~", "~/.config"]
+- clean:
+    ["~", "~/.config", "~/.local", "~/.local/share", "~/.local/state", "~/bin"]
 
 - link:
     ~/.local/bin:
       path: bin
+
+    ~/.shell_local_before:
+      path: shell/shell_local_before
+
+    ~/.shell_local_after:
+      path: shell/shell_local_after
 
     ~/.zshrc_local_before:
       path: zsh/zshrc_local_before
 
     ~/.zshrc_local_after:
       path: zsh/zshrc_local_after
+
+    ~/.bashrc_local_before:
+      path: bash/bashrc_local_before
+
+    ~/.bashrc_local_after:
+      path: bash/bashrc_local_after
+- create:
+    - ~/work
+    - ~/personal
+    - ~/Documents
+
 - shell:
     - git submodule update --init --recursive

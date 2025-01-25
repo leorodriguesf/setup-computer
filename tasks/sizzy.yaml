@@ -1,0 +1,3 @@
+- name: Install Sizzy (useful for developing responsive apps)
+  homebrew_cask:
+    name: sizzy

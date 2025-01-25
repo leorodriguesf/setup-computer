@@ -1,10 +1,14 @@
 - name: Install Google Chrome
-  homebrew_cask:
-    name: google-chrome
+  become: true
+  shell: |
+    cd /tmp
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+  args:
+    creates: /usr/bin/google-chrome
 
-- name: Install defaultbrowser
-  homebrew:
-    name: defaultbrowser
-
-- name: Setup Google Chrome as default browser
-  shell: defaultbrowser chrome
+- name: Set Google Chrome as default browser
+  become: true
+  shell: |
+    sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/google-chrome 500
+    sudo update-alternatives --set x-www-browser /usr/bin/google-chrome

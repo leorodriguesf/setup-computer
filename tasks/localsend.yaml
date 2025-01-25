@@ -1,3 +1,4 @@
 - name: Install LocalSend
-  homebrew_cask:
+  become: true
+  snap:
     name: localsend

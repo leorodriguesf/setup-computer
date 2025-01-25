@@ -1,10 +1,11 @@
 - name: Clone dotfiles
   git:
-    repo: https://github.com/leonardorodriguesf/dotfiles
-    dest: "{{ xdg_data_home }}/dotfiles"
+    repo: git@github.com:leorodriguesf/dotfiles.git
+    dest: ~/personal/projects/dotfiles
+    accept_hostkey: true
 
 - name: Link dotfiles
-  shell: "{{ xdg_data_home }}/dotfiles/install"
+  shell: ~/personal/projects/dotfiles/install
   register: link_dotfiles
 
 - debug:

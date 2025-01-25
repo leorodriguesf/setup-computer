@@ -1,4 +1,4 @@
 - name: Install Slack
-  homebrew_cask:
+  become: true
+  snap:
     name: slack
-

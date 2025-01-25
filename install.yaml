@@ -5,12 +5,14 @@
     xdg_state_home: "{{ lookup('env', 'XDG_STATE_HOME') }}"
     setup_home_dir: "{{ lookup('env', 'SETUP_HOME') }}"
   tasks:
-    - import_tasks: tasks/dotfiles.yaml
-      tags: dotfiles
     - import_tasks: tasks/1password.yaml
       tags: 1password
     - import_tasks: tasks/ssh.yaml
       tags: ssh
+    - import_tasks: tasks/i3.yaml
+      tags: i3
+    - import_tasks: tasks/dotfiles.yaml
+      tags: dotfiles
     - import_tasks: tasks/zsh.yaml
       tags: zsh
     - import_tasks: tasks/productivity.yaml
@@ -21,8 +23,6 @@
       tags: node
     - import_tasks: tasks/projects.yaml
       tags: projects
-    - import_tasks: tasks/aerospace.yaml
-      tags: aerospace
     - import_tasks: tasks/alacritty.yaml
       tags: alacritty
     - import_tasks: tasks/docker.yaml
@@ -31,8 +31,6 @@
       tags: flameshot
     - import_tasks: tasks/google-chrome.yaml
       tags: google-chrome
-    - import_tasks: tasks/hammerspoon.yaml
-      tags: hammerspoon
     - import_tasks: tasks/localsend.yaml
       tags: localsend
     - import_tasks: tasks/slack.yaml
@@ -41,3 +39,7 @@
       tags: spotify
     - import_tasks: tasks/vscode.yaml
       tags: vscode
+    - import_tasks: tasks/backup.yaml
+      tags: backup
+    - import_tasks: tasks/discord.yaml
+      tags: discord

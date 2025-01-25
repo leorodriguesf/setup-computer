@@ -1,18 +1,21 @@
 - name: Install VSCode
-  homebrew_cask:
-    name: visual-studio-code
-
+  become: true
+  shell: |
+    cd /tmp
+    wget https://vscode.download.prss.microsoft.com/dbazure/download/stable/cd4ee3b1c348a13bafd8f9ad8060705f6d4b9cba/code_1.96.4-1736991114_amd64.deb
+    sudo apt install ./code_1.96.4-1736991114_amd64.deb
+    
 - name: Link settings
   file:
     src: "{{xdg_config_home}}/vscode/settings.json"
-    dest: ~/Library/Application Support/Code/User/settings.json
+    dest: ~/.config/Code/User/settings.json
     state: link
     force: true
 
 - name: Link keybindings
   file:
     src: "{{xdg_config_home}}/vscode/keybindings.json"
-    dest: ~/Library/Application Support/Code/User/keybindings.json
+    dest: ~/.config/Code/User/keybindings.json
     state: link
     force: true
 

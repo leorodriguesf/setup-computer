@@ -2,6 +2,10 @@
 
 set -e
 
+# Ensure computer doesn't go to sleep or lock while installing
+gsettings set org.gnome.desktop.screensaver lock-enabled false
+gsettings set org.gnome.desktop.session idle-delay 0
+
 source prerequisites/install-required.sh
 
 CONFIG=".install.conf.yaml"
@@ -16,5 +20,8 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 
-ansible-playbook install.yaml --tags "dotfiles,1password"
-ansible-playbook install.yaml --skip-tags "dotfiles,1password" --vault-id=./vault/vault-from-op.sh
+ansible-playbook install.yaml --ask-become-pass --vault-id=./vault/vault-from-op.sh
+
+# Revert to normal idle and lock settings
+gsettings set org.gnome.desktop.screensaver lock-enabled true
+gsettings set org.gnome.desktop.session idle-delay 300

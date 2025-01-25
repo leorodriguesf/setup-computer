@@ -4,3 +4,7 @@
 
 - name: Open Hammerspoon
   shell: open /Applications/Hammerspoon.app
+
+- pause:
+    prompt: Please Allow Application Hammerspoon to record the content of the Screen on System Settings
+    minutes: 1

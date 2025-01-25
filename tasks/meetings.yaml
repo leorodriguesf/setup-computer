@@ -1,0 +1,5 @@
+- name: Install Zoom
+
+- name: Install Discord
+  homebrew_cask:
+    name: Discord

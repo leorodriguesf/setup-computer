@@ -1,0 +1,49 @@
+--2025-01-24 08:09:32--  https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_amd64.zip
+Resolving github.com (github.com)... 20.201.28.151
+Connecting to github.com (github.com)|20.201.28.151|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/23527160/aeab6e98-5057-11e6-803b-64a206c2d735?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20250124%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250124T110932Z&X-Amz-Expires=300&X-Amz-Signature=7af4a70c5077ffb8249ccc4b21f78d0620a4fdc6dda8daff3ea7957f3324ffb5&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3Dpup_v0.4.0_linux_amd64.zip&response-content-type=application%2Foctet-stream [following]
+--2025-01-24 08:09:32--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/23527160/aeab6e98-5057-11e6-803b-64a206c2d735?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20250124%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250124T110932Z&X-Amz-Expires=300&X-Amz-Signature=7af4a70c5077ffb8249ccc4b21f78d0620a4fdc6dda8daff3ea7957f3324ffb5&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3Dpup_v0.4.0_linux_amd64.zip&response-content-type=application%2Foctet-stream
+Resolving objects.githubusercontent.com (objects.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1718186 (1,6M) [application/octet-stream]
+Saving to: ‘pup_v0.4.0_linux_amd64.zip’
+
+     0K .......... .......... .......... .......... ..........  2% 1,65M 1s
+    50K .......... .......... .......... .......... ..........  5% 1,39M 1s
+   100K .......... .......... .......... .......... ..........  8% 3,06M 1s
+   150K .......... .......... .......... .......... .......... 11% 2,73M 1s
+   200K .......... .......... .......... .......... .......... 14% 3,08M 1s
+   250K .......... .......... .......... .......... .......... 17% 3,56M 1s
+   300K .......... .......... .......... .......... .......... 20% 2,35M 1s
+   350K .......... .......... .......... .......... .......... 23% 3,08M 1s
+   400K .......... .......... .......... .......... .......... 26% 3,53M 0s
+   450K .......... .......... .......... .......... .......... 29% 2,59M 0s
+   500K .......... .......... .......... .......... .......... 32%  488K 1s
+   550K .......... .......... .......... .......... .......... 35% 5,19M 1s
+   600K .......... .......... .......... .......... .......... 38% 7,30M 0s
+   650K .......... .......... .......... .......... .......... 41% 7,34M 0s
+   700K .......... .......... .......... .......... .......... 44% 4,50M 0s
+   750K .......... .......... .......... .......... .......... 47%  604K 0s
+   800K .......... .......... .......... .......... .......... 50%  225M 0s
+   850K .......... .......... .......... .......... .......... 53%  247M 0s
+   900K .......... .......... .......... .......... .......... 56% 12,5M 0s
+   950K .......... .......... .......... .......... .......... 59%  245M 0s
+  1000K .......... .......... .......... .......... .......... 62%  222M 0s
+  1050K .......... .......... .......... .......... .......... 65%  201M 0s
+  1100K .......... .......... .......... .......... .......... 68% 38,7M 0s
+  1150K .......... .......... .......... .......... .......... 71% 3,17M 0s
+  1200K .......... .......... .......... .......... .......... 74% 3,02M 0s
+  1250K .......... .......... .......... .......... .......... 77% 3,57M 0s
+  1300K .......... .......... .......... .......... .......... 80% 3,08M 0s
+  1350K .......... .......... .......... .......... .......... 83% 2,41M 0s
+  1400K .......... .......... .......... .......... .......... 86% 3,18M 0s
+  1450K .......... .......... .......... .......... .......... 89% 2,63M 0s
+  1500K .......... .......... .......... .......... .......... 92% 3,56M 0s
+  1550K .......... .......... .......... .......... .......... 95% 3,08M 0s
+  1600K .......... .......... .......... .......... .......... 98% 2,69M 0s
+  1650K .......... .......... .......                         100% 3,71M=0,6s
+
+2025-01-24 08:09:33 (2,76 MB/s) - ‘pup_v0.4.0_linux_amd64.zip’ saved [1718186/1718186]
+
