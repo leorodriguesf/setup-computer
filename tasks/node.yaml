@@ -14,3 +14,9 @@
     export NVM_DIR="$HOME/.config/nvm"
     . "$NVM_DIR/nvm.sh"
     corepack enable pnpm
+
+- name: Install npmrc
+  copy:
+    src: "{{ setup_home_dir }}/npm/npmrc"
+    dest: ~/.npmrc
+    mode: 0600
