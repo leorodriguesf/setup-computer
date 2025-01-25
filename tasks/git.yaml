@@ -1,0 +1,5 @@
+- name: Install git config
+  copy:
+    src: "{{ setup_home_dir }}/git/gitconfig_local"
+    dest: ~/.gitconfig_local
+    mode: 0600
