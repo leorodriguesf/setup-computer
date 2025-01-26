@@ -1,3 +1,7 @@
+- name: Install tmux
+  homebrew:
+    name: tmux
+
 - name: Install fzf
   homebrew:
     name: fzf
