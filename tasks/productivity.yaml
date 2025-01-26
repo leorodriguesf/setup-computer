@@ -1,3 +1,8 @@
+- name: Install tmux
+  become: true
+  apt:
+    name: tmux
+
 - name: Install fzf
   become: true
   apt:
