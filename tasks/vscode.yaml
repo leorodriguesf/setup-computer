@@ -2,12 +2,22 @@
   homebrew_cask:
     name: visual-studio-code
 
+- name: Ensure settings exist
+  file:
+    dest: ~/Library/Application Support/Code/User/settings.json
+    state: touch
+
 - name: Link settings
   file:
     src: "{{xdg_config_home}}/vscode/settings.json"
     dest: ~/Library/Application Support/Code/User/settings.json
     state: link
     force: true
+
+- name: Ensure keybindings exist
+  file:
+    dest: ~/Library/Application Support/Code/User/keybindings.json
+    state: touch
 
 - name: Link keybindings
   file:
