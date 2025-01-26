@@ -5,6 +5,7 @@
 
 - name: Install Docker
   when: docker_installed.rc != 0
+  become: true
   shell: |
     cd /tmp
     curl -LO https://desktop.docker.com/mac/main/arm64/178610/Docker.dmg?_gl=1*1i4pzdy*_ga*MTY5MTYyOTI1NC4xNzM2MDI5NjY0*_ga_XJWPQMJYHQ*MTczNjAyOTY2NC4xLjEuMTczNjAzMDU0Mi45LjAuMA..
