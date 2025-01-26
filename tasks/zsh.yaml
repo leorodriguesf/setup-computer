@@ -20,5 +20,10 @@
   homebrew:
     name: starship
 
+- name: Get whoami to change its default shell
+  shell: whoami
+  register: user
+
 - name: Change default shell
-  shell: sudo chsh -s /bin/zsh $(whoami)
+  become: true
+  shell: sudo chsh -s /bin/zsh {{user.stdout}}
