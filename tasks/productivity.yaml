@@ -30,6 +30,13 @@
   homebrew:
     name: htop
 
+- name: Ensure /usr/local/bin exists
+  become: true
+  file:
+    dest: /usr/local/bin
+    mode: 0755
+    state: directory
+
 - name: Install tgpt
   shell: curl -sSL https://raw.githubusercontent.com/aandrew-me/tgpt/main/install | bash -s /usr/local/bin
   become: true
